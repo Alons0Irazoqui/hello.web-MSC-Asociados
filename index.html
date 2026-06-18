@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSC & Asociados | Bufete Jurídico Premium</title>
+    <link rel="icon" type="image/png" href="./img/logo.png">
+    <meta name="description"
+        content="Especialistas en Derecho Familiar, Civil, Corporativo, Laboral, Administrativo y Fiscal. Lic. Minerva Salvador Cornejo.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            blue: '#0B132B',
+                            navy: '#1A2A40',
+                            azure: '#1E3150',
+                            gold: '#C5A059',
+                            goldLight: '#E8D399',
+                            goldDark: '#9E7D3F',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'hero-pattern': "linear-gradient(to bottom, rgba(11,19,43,0.8), rgba(30,49,80,0.95)), url('./img/hero.png')",
+                        'gold-gradient': 'linear-gradient(135deg, #C5A059 0%, #E8D399 50%, #9E7D3F 100%)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body class="font-sans text-gray-800 antialiased selection:bg-brand-gold selection:text-white">
+
+    <!-- ====================================================
+         PRELOADER PREMIUM
+         ==================================================== -->
+    <div id="preloader" class="scale-150">
+        <svg width="0" height="0" style="position:absolute;overflow:hidden">
+            <defs>
+                <linearGradient id="plGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#9E7D3F" />
+                    <stop offset="50%" stop-color="#E8D399" />
+                    <stop offset="100%" stop-color="#C5A059" />
+                </linearGradient>
+            </defs>
+        </svg>
+        <div class="pl-ring-wrap">
+            <svg class="pl-ring-svg" viewBox="0 0 190 190">
+                <circle class="pl-ring-track" cx="95" cy="95" r="85" />
+                <circle class="pl-ring-fill" id="plRing" cx="95" cy="95" r="85" />
+            </svg>
+            <div class="pl-inner">
+                <div class="pl-logo-wrap flex flex-col items-center">
+                    <img src="./img/logo.png" alt="MSC Logo"
+                        class="w-32 h-auto opacity-0 transform translate-y-2 scale-90 transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
+                        id="plLogoImg">
+                </div>
+            </div>
+        </div>
+        <div class="pl-bar-wrap">
+            <div class="pl-bar-fill" id="plBar"></div>
+        </div>
+        <div class="pl-counter" id="plCount">0%</div>
+    </div>
+
+    <!-- Iris reveal overlay — JS anima radial-gradient de dentro hacia afuera -->
+    <div id="irisOverlay" aria-hidden="true"></div>
+
+    <!-- ====================================================
+         NAVBAR (fuera de siteWrap para no ser afectado por iris)
+         ==================================================== -->
+    <header id="navbar" class="navbar fixed w-full top-0 z-50 py-4 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-3 group">
+                <img src="./img/logo.png" alt="MSC Logo"
+                    class="h-28 w-auto object-contain transition-transform duration-300 group-hover:scale-105">
+                <div class="hidden sm:flex flex-col border-l border-brand-gold/30 pl-3">
+                    <span class="text-white text-sm font-semibold tracking-widest uppercase">MSC & Asociados</span>
+                    <span class="text-brand-gold text-xs tracking-widest uppercase">Bufete Jurídico</span>
+                </div>
+            </a>
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#servicios"
+                    class="text-gray-300 hover:text-brand-gold text-sm font-medium transition-colors tracking-wide">Áreas
+                    de Práctica</a>
+                <a href="#nosotros"
+                    class="text-gray-300 hover:text-brand-gold text-sm font-medium transition-colors tracking-wide">Firma</a>
+                <a href="#contacto"
+                    class="btn-gold border border-brand-gold text-brand-gold hover:text-white px-6 py-2 rounded-sm text-sm font-semibold tracking-wider uppercase">
+                    Consulta Gratuita
+                </a>
+            </nav>
+            <button id="openMobileMenu" class="md:hidden text-white hover:text-brand-gold focus:outline-none">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+    
+    </header>
+
+    <!-- Mobile Menu Container -->
+    <div id="mobileMenu" class="fixed inset-0 bg-brand-navy/98 backdrop-blur-md z-[60] transform translate-x-full transition-transform duration-300 md:hidden flex flex-col items-center justify-center gap-8">
+        <button id="closeMobileMenu" class="absolute top-8 right-8 text-white hover:text-brand-gold text-4xl">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <a href="#servicios" class="mobile-link text-white text-2xl hover:text-brand-gold tracking-widest uppercase">Áreas de Práctica</a>
+        <a href="#nosotros" class="mobile-link text-white text-2xl hover:text-brand-gold tracking-widest uppercase">Firma</a>
+        <a href="#contacto" class="btn-gold border border-brand-gold text-brand-gold px-8 py-3 rounded-sm text-lg uppercase tracking-wider mobile-link mt-4 hover:text-white">Consulta Gratuita</a>
+    </div>
+
+
+    <!-- ====================================================
+         SITE WRAP — clip-path iris reveal
+         ==================================================== -->
+    <div id="siteWrap">
+
+        <!-- ====================================================
+         HERO — "WOW" SECTION
+         ==================================================== -->
+        <section
+            class="hero-section relative min-h-screen flex items-center justify-center bg-hero-pattern bg-cover bg-center bg-no-repeat bg-fixed pt-40 lg:pt-48 overflow-hidden">
+
+            <!-- Particles canvas -->
+            <canvas id="heroCanvas"></canvas>
+
+            <!-- Gradient overlay -->
+            <div class="hero-overlay"></div>
+
+            <!-- Concentric pulse rings -->
+            <div class="hero-rings" aria-hidden="true">
+                <div class="h-ring h-ring-1"></div>
+                <div class="h-ring h-ring-2"></div>
+                <div class="h-ring h-ring-3"></div>
+            </div>
+
+            <!-- Floating orbs -->
+            <div class="orb orb-1" data-speed="0.03"></div>
+            <div class="orb orb-2" data-speed="0.02"></div>
+            <div class="orb orb-3" data-speed="0.05"></div>
+            <div class="orb orb-4" data-speed="0.04"></div>
+            <div class="orb orb-5" data-speed="0.025"></div>
+
+            <!-- Top gold line -->
+            <div class="hero-topline"></div>
+
+            <!-- Scan line -->
+            <div class="hero-scanline" aria-hidden="true"></div>
+
+            <!-- Corner accents -->
+            <div class="ca ca-tl" aria-hidden="true"></div>
+            <div class="ca ca-tr" aria-hidden="true"></div>
+            <div class="ca ca-bl" aria-hidden="true"></div>
+            <div class="ca ca-br" aria-hidden="true"></div>
+
+            <!-- Main content -->
+            <div id="heroContent" class="relative z-10 max-w-5xl mx-auto px-6 lg:px-8 text-center text-white">
+
+                <!-- Eyebrow badge -->
+                <div class="hero-el mb-7" data-delay="0">
+                    <span
+                        class="hero-badge px-5 py-2 rounded-full border border-brand-gold/30 bg-brand-gold/10 text-brand-gold text-xs font-semibold tracking-[0.22em] uppercase backdrop-blur-sm">
+                        <span class="badge-dot"></span>
+                        <span class="badge-text">Bufete Jurídico Especializado</span>
+                    </span>
+                </div>
+
+                <!-- Headline line 1 — split por JS -->
+                <div id="hLine1Wrap" class="mb-1">
+                    <div id="hLine1" class="text-5xl md:text-7xl font-serif font-bold leading-tight text-white"
+                        style="opacity:0">
+                        Protegemos su patrimonio,
+                    </div>
+                </div>
+
+                <!-- Headline line 2 — gold flow constante -->
+                <div class="hero-el mb-8" data-delay="420" id="hLine2Wrap">
+                    <div class="text-5xl md:text-7xl font-serif font-bold leading-tight">
+                        <span class="gold-flow italic font-light">defendemos su futuro.</span>
+                    </div>
+                </div>
+
+                <!-- Decorative divider -->
+                <div class="hero-el flex items-center justify-center gap-3 mb-6" data-delay="560">
+                    <div class="h-px w-20 bg-gradient-to-r from-transparent to-brand-gold/50"></div>
+                    <i class="fa-solid fa-scale-balanced text-brand-gold/40 text-xs"></i>
+                    <div class="h-px w-20 bg-gradient-to-l from-transparent to-brand-gold/50"></div>
+                </div>
+
+                <!-- Typewriter — especialidades ciclando -->
+                <div class="hero-el mb-8" data-delay="620">
+                    <div class="tw-line">
+                        <span class="tw-pre">Especialistas en</span>
+                        <span id="twText" class="tw-text"></span><span class="tw-cur" id="twCur">|</span>
+                    </div>
+                </div>
+
+                <!-- Subtitle -->
+                <p class="hero-el text-lg md:text-xl text-gray-300 mb-10 max-w-3xl mx-auto font-light leading-relaxed"
+                    data-delay="660">
+                    Asesoría legal de élite en CDMX. Especialistas en Derecho Familiar, Civil, Corporativo, Laboral,
+                    Administrativo y Fiscal. Representación firme y resultados probados bajo la dirección de la Lic.
+                    Minerva S. Cornejo.
+                </p>
+
+                <!-- CTA buttons -->
+                <div class="hero-el flex flex-col sm:flex-row gap-4 justify-center items-center mb-14" data-delay="800">
+                    <a href="#contacto"
+                        class="btn-hero-primary bg-brand-gold text-brand-blue px-8 py-4 rounded-sm font-bold tracking-widest uppercase text-sm w-full sm:w-auto flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-scale-balanced"></i> Agendar Asesoría
+                    </a>
+                    <a href="https://wa.me/525512441146" target="_blank"
+                        class="btn-hero-outline px-8 py-4 rounded-sm font-bold tracking-widest uppercase text-sm text-white border border-white/30 w-full sm:w-auto flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Contacto Rápido
+                    </a>
+                </div>
+
+                <!-- Trust badges -->
+                <div class="hero-el flex flex-wrap justify-center gap-6 md:gap-8" data-delay="960">
+                    <div class="trust-item flex items-center gap-2">
+                        <i class="fa-solid fa-shield-check text-brand-gold text-xs"></i>
+                        <span
+                            class="text-gray-400 text-xs tracking-wider uppercase transition-colors duration-300">Confidencialidad
+                            Total</span>
+                    </div>
+                    <div class="hidden sm:block w-px h-4 bg-white/15 self-center"></div>
+                    <div class="trust-item flex items-center gap-2">
+                        <i class="fa-solid fa-star text-brand-gold text-xs"></i>
+                        <span class="text-gray-400 text-xs tracking-wider uppercase transition-colors duration-300">+10
+                            Años de Trayectoria</span>
+                    </div>
+                    <div class="hidden sm:block w-px h-4 bg-white/15 self-center"></div>
+                    <div class="trust-item flex items-center gap-2">
+                        <i class="fa-solid fa-gavel text-brand-gold text-xs"></i>
+                        <span class="text-gray-400 text-xs tracking-wider uppercase transition-colors duration-300">6
+                            Áreas de Práctica</span>
+                    </div>
+                    <div class="hidden sm:block w-px h-4 bg-white/15 self-center"></div>
+                    <div class="trust-item flex items-center gap-2">
+                        <i class="fa-solid fa-location-dot text-brand-gold text-xs"></i>
+                        <span class="text-gray-400 text-xs tracking-wider uppercase transition-colors duration-300">CDMX
+                            · Col. Doctores</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll indicator -->
+            <div class="scroll-indicator absolute bottom-10 left-1/2 -translate-x-1/2 z-10">
+                <a href="#servicios" class="flex flex-col items-center gap-2 text-brand-gold">
+                    <span class="text-xs tracking-widest uppercase opacity-60">Descubrir</span>
+                    <div class="scroll-line">
+                        <div class="scroll-dot"></div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- ====================================================
+         ESTADISTICAS / LOGROS
+         ==================================================== -->
+        <section id="estadisticas"
+            class="py-16 bg-brand-navy border-t border-brand-gold/20 relative z-20 shadow-[0_-15px_30px_rgba(0,0,0,0.5)]">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div class="reveal reveal-left">
+                        <div
+                            class="text-4xl md:text-5xl font-serif font-bold text-brand-gold mb-2 drop-shadow-[0_0_12px_rgba(197,160,89,0.3)]">
+                            +10</div>
+                        <div class="text-xs text-gray-300 uppercase tracking-widest font-semibold">Años de Exp.</div>
+                    </div>
+                    <div class="reveal reveal-left">
+                        <div
+                            class="text-4xl md:text-5xl font-serif font-bold text-brand-gold mb-2 drop-shadow-[0_0_12px_rgba(197,160,89,0.3)]">
+                            +500</div>
+                        <div class="text-xs text-gray-300 uppercase tracking-widest font-semibold">Casos de Éxito</div>
+                    </div>
+                    <div class="reveal reveal-right">
+                        <div
+                            class="text-4xl md:text-5xl font-serif font-bold text-brand-gold mb-2 drop-shadow-[0_0_12px_rgba(197,160,89,0.3)]">
+                            6</div>
+                        <div class="text-xs text-gray-300 uppercase tracking-widest font-semibold">Áreas Legales</div>
+                    </div>
+                    <div class="reveal reveal-right">
+                        <div
+                            class="text-4xl md:text-5xl font-serif font-bold text-brand-gold mb-2 drop-shadow-[0_0_12px_rgba(197,160,89,0.3)]">
+                            100%</div>
+                        <div class="text-xs text-gray-300 uppercase tracking-widest font-semibold">Compromiso</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================================================
+         SERVICIOS
+         ==================================================== -->
+        <section id="servicios" class="py-24 bg-white relative">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+                    <h2 class="text-brand-gold font-bold tracking-widest uppercase text-sm mb-2"><i
+                            class="fa-solid fa-gavel mr-2"></i>Áreas de Especialidad</h2>
+                    <h3 class="text-4xl md:text-5xl font-serif font-bold text-brand-navy mb-6">Expertise Legal Integral
+                    </h3>
+                    <div class="w-20 h-1 bg-brand-gold mx-auto mb-6"></div>
+                    <p class="text-gray-600">Ofrecemos soluciones jurídicas estratégicas y personalizadas. Nuestro
+                        enfoque proactivo previene conflictos y asegura resoluciones favorables en múltiples disciplinas
+                        del derecho.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="service-card reveal bg-gray-50 p-8 rounded-lg relative overflow-hidden group">
+                        <div
+                            class="absolute top-0 right-0 w-24 h-24 bg-brand-gold/10 rounded-bl-full -z-0 transition-transform group-hover:scale-150">
+                        </div>
+                        <div
+                            class="service-icon-wrapper w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-sm mb-6 z-10 relative">
+                            <i class="fa-solid fa-house-chimney service-icon text-2xl text-brand-navy"></i>
+                        </div>
+                        <h4 class="text-xl font-serif font-bold text-brand-navy mb-4 relative z-10">Derecho Familiar y
+                            Civil</h4>
+                        <ul class="space-y-2 text-gray-600 text-sm relative z-10">
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-check text-brand-gold mt-1 mr-2 text-xs"></i> Juicios
+                                intestamentarios</li>
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-check text-brand-gold mt-1 mr-2 text-xs"></i> Testamentos</li>
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-check text-brand-gold mt-1 mr-2 text-xs"></i> Divorcios</li>
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-check text-brand-gold mt-1 mr-2 text-xs"></i> Pensión alimenticia
+                            </li>
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-check text-brand-gold mt-1 mr-2 text-xs"></i> Arrendamiento y
+                                Escrituraciones</li>
+                        </ul>
+                    </div>
+                    <div
+                        class="service-card reveal reveal-delay-1 bg-gray-50 p-8 rounded-lg relative overflow-hidden group">
+                        <div
+                            class="absolute top-0 right-0 w-24 h-24 bg-brand-gold/10 rounded-bl-full -z-0 transition-transform group-hover:scale-150">
+                        </div>
+                        <div
+                            class="service-icon-wrapper w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-sm mb-6 z-10 relative">
+                            <i class="fa-solid fa-briefcase service-icon text-2xl text-brand-navy"></i>
+                        </div>
+                        <h4 class="text-xl font-serif font-bold text-brand-navy mb-4 relative z-10">Derecho Corporativo
+                        </h4>
+                        <ul class="space-y-2 text-gray-600 text-sm relative z-10">
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-check text-brand-gold mt-1 mr-2 text-xs"></i> Elaboración de
+                                Contratos</li>
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-check text-brand-gold mt-1 mr-2 text-xs"></i> Constitución de
+                                sociedades</li>
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-check text-brand-gold mt-1 mr-2 text-xs"></i> Auditorías legales
+                            </li>
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-check text-brand-gold mt-1 mr-2 text-xs"></i> Protección de
+                                patrimonio corporativo</li>
+                        </ul>
+                    </div>
+                    <div
+                        class="service-card reveal reveal-delay-2 bg-gray-50 p-8 rounded-lg relative overflow-hidden group">
+                        <div
+                            class="absolute top-0 right-0 w-24 h-24 bg-brand-gold/10 rounded-bl-full -z-0 transition-transform group-hover:scale-150">
+                        </div>
+                        <div
+                            class="service-icon-wrapper w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-sm mb-6 z-10 relative">
+                            <i class="fa-solid fa-users-gear service-icon text-2xl text-brand-navy"></i>
+                        </div>
+                        <h4 class="text-xl font-serif font-bold text-brand-navy mb-4 relative z-10">Derecho Laboral</h4>
+                        <ul class="space-y-2 text-gray-600 text-sm relative z-10">
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-check text-brand-gold mt-1 mr-2 text-xs"></i> Conciliación
+                                laboral</li>
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-check text-brand-gold mt-1 mr-2 text-xs"></i> Juicios laborales
+                            </li>
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-check text-brand-gold mt-1 mr-2 text-xs"></i> Despidos
+                                injustificados</li>
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-check text-brand-gold mt-1 mr-2 text-xs"></i> Asesoría a empresas
+                                y sindicatos</li>
+                        </ul>
+                    </div>
+                    <div class="service-card reveal bg-gray-50 p-8 rounded-lg relative overflow-hidden group">
+                        <div
+                            class="absolute top-0 right-0 w-24 h-24 bg-brand-gold/10 rounded-bl-full -z-0 transition-transform group-hover:scale-150">
+                        </div>
+                        <div
+                            class="service-icon-wrapper w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-sm mb-6 z-10 relative">
+                            <i class="fa-solid fa-file-invoice-dollar service-icon text-2xl text-brand-navy"></i>
+                        </div>
+                        <h4 class="text-xl font-serif font-bold text-brand-navy mb-4 relative z-10">Administrativo y
+                            Fiscal</h4>
+                        <ul class="space-y-2 text-gray-600 text-sm relative z-10">
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-check text-brand-gold mt-1 mr-2 text-xs"></i> Impugnación de
+                                pagos</li>
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-check text-brand-gold mt-1 mr-2 text-xs"></i> Multas y sanciones
+                                administrativas</li>
+                            <li class="flex items-start"><i
+                                    class="fa-solid fa-check text-brand-gold mt-1 mr-2 text-xs"></i> Regularización
+                                fiscal</li>
+                        </ul>
+                    </div>
+                    <div
+                        class="service-card reveal reveal-delay-1 bg-gray-50 p-8 rounded-lg relative overflow-hidden group md:col-span-2 lg:col-span-2">
+                        <div
+                            class="absolute top-0 right-0 w-32 h-32 bg-brand-gold/10 rounded-bl-full -z-0 transition-transform group-hover:scale-150">
+                        </div>
+                        <div
+                            class="service-icon-wrapper w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-sm mb-6 z-10 relative">
+                            <i class="fa-solid fa-shield-halved service-icon text-2xl text-brand-navy"></i>
+                        </div>
+                        <div class="relative z-10">
+                            <h4 class="text-xl font-serif font-bold text-brand-navy mb-4">Protección Constitucional y
+                                Amparos</h4>
+                            <p class="text-gray-600 text-sm mb-4">Defensa experta contra actos de autoridad que vulneren
+                                sus derechos fundamentales.</p>
+                            <ul class="space-y-2 text-gray-600 text-sm grid grid-cols-1 md:grid-cols-2 gap-2">
+                                <li class="flex items-start"><i
+                                        class="fa-solid fa-check text-brand-gold mt-1 mr-2 text-xs"></i> Amparos
+                                    indirectos y directos</li>
+                                <li class="flex items-start"><i
+                                        class="fa-solid fa-check text-brand-gold mt-1 mr-2 text-xs"></i> Amparos para no
+                                    registro de celular</li>
+                                <li class="flex items-start"><i
+                                        class="fa-solid fa-check text-brand-gold mt-1 mr-2 text-xs"></i> Defensa de
+                                    derechos humanos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================================================
+         FIRMA / NOSOTROS
+         ==================================================== -->
+        <section id="nosotros"
+            class="py-24 bg-gradient-to-b from-brand-blue to-brand-azure relative border-y border-brand-gold/20">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div class="reveal reveal-left">
+                        <div class="relative">
+                            <div
+                                class="absolute -inset-4 border-2 border-brand-gold/30 rounded-lg transform translate-x-4 translate-y-4">
+                            </div>
+                            <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?q=80&w=1000&auto=format&fit=crop"
+                                alt="Bufete Jurídico"
+                                class="relative rounded-lg shadow-2xl z-10 grayscale hover:grayscale-0 transition-all duration-700">
+                            <div
+                                class="absolute -bottom-8 -right-8 bg-brand-navy p-6 rounded-lg shadow-xl border border-brand-gold/30 z-20 hidden md:block">
+                                <div class="text-brand-gold text-4xl mb-2"><i class="fa-solid fa-award"></i></div>
+                                <div class="text-white font-serif text-xl font-bold">Lic. Minerva S. Cornejo</div>
+                                <div class="text-gray-400 text-sm">Directora General</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reveal reveal-right">
+                        <h2 class="text-brand-gold font-bold tracking-widest uppercase text-sm mb-2">Conozca nuestra
+                            firma</h2>
+                        <h3 class="text-4xl md:text-5xl font-serif font-bold text-white mb-6">Compromiso absoluto con la
+                            justicia y sus intereses.</h3>
+                        <p class="text-gray-300 mb-6 leading-relaxed font-light text-lg">
+                            En <strong class="text-white font-medium">MSC & Asociados</strong>, no solo tomamos casos;
+                            adoptamos causas. Dirigidos por la experiencia y tenacidad de la Licenciada Minerva Salvador
+                            Cornejo, nuestro bufete se distingue por una ética de trabajo intachable y una agresividad
+                            analítica en los tribunales.
+                        </p>
+                        <p class="text-gray-400 mb-8 leading-relaxed text-sm">
+                            Comprendemos que cada situación legal genera incertidumbre. Por ello, proveemos
+                            transparencia total, comunicación constante y estrategias jurídicas vanguardistas diseñadas
+                            específicamente para el panorama legal actual en México.
+                        </p>
+                        <div class="grid grid-cols-2 gap-6 border-t border-white/10 pt-8">
+                            <div>
+                                <div class="text-3xl font-serif text-brand-gold mb-1">100%</div>
+                                <div class="text-xs text-gray-400 uppercase tracking-widest">Confidencialidad</div>
+                            </div>
+                            <div>
+                                <div class="text-3xl font-serif text-brand-gold mb-1"><i
+                                        class="fa-solid fa-scale-unbalanced"></i></div>
+                                <div class="text-xs text-gray-400 uppercase tracking-widest">Atención Especializada
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================================================
+         CONTACTO
+         ==================================================== -->
+        <section id="contacto" class="py-24 bg-brand-navy relative">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-5 gap-12">
+                    <div class="lg:col-span-2 reveal reveal-left">
+                        <h3 class="text-3xl font-serif font-bold text-white mb-6">Inicie su consulta hoy</h3>
+                        <p class="text-gray-400 mb-10 text-sm leading-relaxed">El tiempo es un factor crítico en
+                            cualquier asunto legal. Contáctenos para programar una evaluación de su caso.</p>
+                        <div class="space-y-8">
+                            <div class="flex items-start gap-4 group">
+                                <div
+                                    class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-brand-gold group-hover:bg-brand-gold group-hover:text-brand-navy transition-all">
+                                    <i class="fa-solid fa-location-dot text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-semibold mb-1">Oficina Central</h4>
+                                    <p class="text-gray-400 text-sm">Dr. Lucio no. 51, Despacho 101,<br>Esq. Dr.
+                                        Lavista, Col. Doctores.<br>Alcaldía Cuauhtémoc, C.P. 06720, CDMX</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 group">
+                                <div
+                                    class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-brand-gold group-hover:bg-brand-gold group-hover:text-brand-navy transition-all">
+                                    <i class="fa-solid fa-phone text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-semibold mb-1">Líneas Directas</h4>
+                                    <p class="text-gray-400 text-sm">Oficina: (55) 5578 2597</p>
+                                    <p class="text-brand-gold mt-1 font-medium"><i class="fa-brands fa-whatsapp"></i>
+                                        WhatsApp: (55) 1244 1146</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 group">
+                                <div
+                                    class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-brand-gold group-hover:bg-brand-gold group-hover:text-brand-navy transition-all">
+                                    <i class="fa-regular fa-envelope text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-semibold mb-1">Correo Electrónico</h4>
+                                    <p class="text-gray-400 text-sm break-all">minervasalvadorcornejo@yahoo.com.mx</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 group">
+                                <div
+                                    class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-brand-gold group-hover:bg-brand-gold group-hover:text-brand-navy transition-all">
+                                    <i class="fa-brands fa-facebook-f text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white font-semibold mb-1">Facebook</h4>
+                                    <a href="#"
+                                        class="text-gray-400 hover:text-brand-gold text-sm transition-colors">Minerva
+                                        Salvador Cornejo</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-3 reveal reveal-right">
+                        <div
+                            class="bg-brand-blue/50 p-8 md:p-10 rounded-xl border border-white/10 shadow-2xl backdrop-blur-sm">
+                            <h4 class="text-2xl font-serif font-bold text-white mb-2">Evaluación Gratuita de Caso</h4>
+                            <p class="text-brand-gold text-sm mb-8">Complete el formulario y le responderemos vía
+                                WhatsApp inmediatamente.</p>
+                            <form id="waForm" class="space-y-6">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div>
+                                        <label
+                                            class="block text-xs font-medium text-gray-400 uppercase tracking-wider mb-2">Nombre
+                                            Completo</label>
+                                        <input type="text" id="waName" required
+                                            class="input-premium w-full px-4 py-3 rounded-sm text-sm"
+                                            placeholder="Ej. Juan Pérez">
+                                    </div>
+                                    <div>
+                                        <label
+                                            class="block text-xs font-medium text-gray-400 uppercase tracking-wider mb-2">Asunto
+                                            Principal</label>
+                                        <select id="waService" required
+                                            class="input-premium w-full px-4 py-3 rounded-sm text-sm appearance-none">
+                                            <option value="" disabled selected>Seleccione el área legal</option>
+                                            <option value="Derecho Familiar (Divorcio, Pensión, etc.)">Derecho Familiar
+                                            </option>
+                                            <option value="Derecho Civil (Contratos, Intestados)">Derecho Civil /
+                                                Sucesiones</option>
+                                            <option value="Derecho Laboral (Despidos, Conciliación)">Derecho Laboral
+                                            </option>
+                                            <option value="Derecho Corporativo">Derecho Corporativo</option>
+                                            <option value="Administrativo / Fiscal">Administrativo / Fiscal</option>
+                                            <option value="Amparos">Amparos</option>
+                                            <option value="Otro">Otro asunto legal</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label
+                                        class="block text-xs font-medium text-gray-400 uppercase tracking-wider mb-2">Breve
+                                        descripción del caso (Opcional)</label>
+                                    <textarea id="waMessage" rows="4"
+                                        class="input-premium w-full px-4 py-3 rounded-sm text-sm resize-none"
+                                        placeholder="Describa brevemente su situación para poder ayudarle mejor..."></textarea>
+                                </div>
+                                <button type="submit"
+                                    class="btn-gold w-full bg-brand-gold text-brand-blue py-4 rounded-sm font-bold tracking-widest uppercase text-sm hover:text-white transition-colors flex justify-center items-center gap-2">
+                                    <i class="fa-brands fa-whatsapp text-lg"></i> Enviar Mensaje a WhatsApp
+                                </button>
+                                <p class="text-center text-xs text-gray-500 mt-4"><i class="fa-solid fa-lock mr-1"></i>
+                                    Su información está protegida por el secreto profesional.</p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====================================================
+         FOOTER
+         ==================================================== -->
+        <footer class="bg-brand-blue border-t border-white/5 py-10">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-center md:text-left">
+                    <div class="text-2xl font-serif font-bold text-white mb-1"><span class="text-brand-gold">M</span>SC
+                        & ASOCIADOS</div>
+                    <p class="text-gray-500 text-xs tracking-widest uppercase">Bufete Jurídico</p>
+                </div>
+                <div class="text-gray-500 text-sm text-center">
+                    &copy; <span id="year"></span> MSC & Asociados. Todos los derechos reservados.<br>
+                    <a href="#" class="hover:text-brand-gold transition-colors">Aviso de Privacidad</a> | <a href="#"
+                        class="hover:text-brand-gold transition-colors">Términos y Condiciones</a>
+                </div>
+            </div>
+        </footer>
+
+    </div><!-- /siteWrap -->
+
+    <!-- WhatsApp float (fuera de siteWrap) -->
+    <a href="https://wa.me/525512441146?text=Hola,%20me%20gustaría%20solicitar%20asesoría%20legal%20con%20MSC%20&%20Asociados."
+        target="_blank" class="float-wa" aria-label="Contactar por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- ====================================================
+         JAVASCRIPT NATIVO — ANIMACIONES PREMIUM
+         ==================================================== -->
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
